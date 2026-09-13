@@ -138,7 +138,7 @@ with col1:
         value="ATGCGATCGATCGATC"
     )
     st.markdown("</div>", unsafe_allow_html=True)
-with col2:  
+ with col2:
     st.markdown("<div class='dashboard-card'>", unsafe_allow_html=True)
     st.markdown("<h3>📊 Clinical & Laboratory Metrics</h3>", unsafe_allow_html=True)
     
@@ -239,17 +239,15 @@ if run_btn:
             elif 30 <= risk_score < 70:
                 st.warning(f"🟡 Moderate Alert - Potential Risk Requiring Follow-up (Risk Rate: {risk_score}%)")
             else:
-                st.error(f"🔴 High Risk Warning - Immediate Medical Intervention Required (Risk Rate: {risk_score}%)")
-st.markdown("<br>", unsafe_allow_html=True)
-st.markdown(f"""
+                st.error(f"🔴 High Risk Warning - Immediate Medical Intervention Required (Risk Rate: {risk_score}%)")smarkdown("<br>", unsafe_allow_html=True)
+        st.markdown(f"""
         <div style='background-color: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0;'>
             <h4 style='color: #1e3a8a; margin-top: 0;'>🔬 Clinical Summary & Protocol</h4>
             <ul style='color: #334155; line-height: 2.0; font-size: 16px;'>
                 <li><b>Patient Profile:</b> {patient_category} | <b>Sample:</b> {sample_type}</li>
                 <li><b>Pathogen Detected:</b> {pathogen}</li>
                 <li><b>Biomarkers:</b> CRP: <code>{crp_input} mg/L</code> | WBC: <code>{wbc_input} cells/μL</code></li>
-                <li><b>Clinical Decision:</b> <b>{"Immediate medical attention & appropriate antibiotic therapy required." 
-                                                  if risk_score >= 70 else "Condition stable; regular monitoring and preventive care advised."}</b></li>
+                <li><b>Clinical Decision:</b> <b>{"Immediate medical attention & appropriate antibiotic therapy required." if risk_score >= 70 else "Condition stable; regular monitoring and preventive care advised."}</b></li>
             </ul>
         </div>
         """, unsafe_allow_html=True)
