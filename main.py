@@ -4,12 +4,12 @@ import re
 # Page Configuration
 st.set_page_config(
     page_title="AI-Marshes Microbe - Diagnostic Hub",
-    page_icon="🧬",
+    page_icon="🦠",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-# Professional Blue Tech & Medical Styling + Clean Animated Banners (No text, moving icons only)
+# Professional Blue Tech & Medical Styling + Clean Animated Banners
 st.markdown("""
     <style>
     .stApp {
@@ -61,7 +61,7 @@ st.markdown("""
         box-shadow: 0 8px 25px rgba(29, 78, 216, 0.5);
     }
 
-    /* --- شريط ديكوري متحرك بدون أي نصوص، النقشات فقط تتحرك --- */
+    /* --- شريط ديكوري متحرك --- */
     .microbe-banner {
         width: 100%;
         height: 38px;
@@ -96,7 +96,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# دالة لطباعة الشريط المزخرف الخالي من النصوص
 def render_banner():
     st.markdown('<div class="microbe-banner"></div>', unsafe_allow_html=True)
 
@@ -104,10 +103,8 @@ def render_banner():
 st.markdown("<h1>🧬 AI-Marshes Microbe Intelligence Hub</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center; color: #334155; font-size: 19px; font-weight: 500;'>Advanced Microbial Risk Diagnostic & Ecosystem Analytics Platform</p>", unsafe_allow_html=True)
 
-# --- الشريط الأول المتحرك تحت العنوان مباشرة ---
 render_banner()
 
-# Layout Columns (Main Form Layout)
 col1, col2 = st.columns(2, gap="large")
 
 with col1:
@@ -119,9 +116,21 @@ with col1:
         ["Select Category...", "🤰 Pregnant Woman", "👶 Pediatrics & Adolescents (1 - 18 yrs)", "🧑 Adults / General"]
     )
     
+    # قائمة العينات التسع الكاملة والمحدثة
     sample_type = st.selectbox(
         "🧪 Sample Type:",
-        ["Select Sample Type...", "💧 Urine Sample", "🩸 Blood Sample", "🧬 Vaginal Swab (Pregnant Specific)", "🩹 Wound Swab (Marshes/Tigris Environment)"]
+        [
+            "Select Sample Type...",
+            "Water Sample (Environmental / Marshes)",
+            "Urine Sample",
+            "Blood Sample",
+            "Stool Sample",
+            "Rectal Swab",
+            "Wound / Pus Swab",
+            "Vaginal Swab",
+            "Sputum Sample",
+            "Throat Swab"
+        ]
     )
     
     gene_sequence = st.text_input(
@@ -129,7 +138,7 @@ with col1:
         value="ATGCGATCGATCGATC"
     )
     st.markdown("</div>", unsafe_allow_html=True)
-with col2:
+ with col2:
     st.markdown("<div class='dashboard-card'>", unsafe_allow_html=True)
     st.markdown("<h3>📊 Clinical & Laboratory Metrics</h3>", unsafe_allow_html=True)
     
@@ -137,10 +146,10 @@ with col2:
         "🦠 Matched Pathogen in Database:",
         [
             "Select Pathogen...",
-            "Escherichia coli (UTI & Enteric)",
-            "Pseudomonas aeruginosa (Marshes & Wounds)",
-            "Vibrio cholerae (River & Marshes Water)",
-            "Klebsiella pneumoniae (Respiratory & Gynecological)",
+            "Escherichia coli (E. coli)",
+            "Pseudomonas aeruginosa",
+            "Vibrio cholerae",
+            "Klebsiella pneumoniae",
             "No Pathogenic Bacteria Detected (Normal)"
         ]
     )
@@ -156,7 +165,6 @@ with col2:
     )
     st.markdown("</div>", unsafe_allow_html=True)
 
-# Full-width Ultrasound selection
 st.markdown("<div class='dashboard-card'>", unsafe_allow_html=True)
 ultrasound = st.selectbox(
     "🩺 Ultrasound & Imaging Status:",
@@ -166,12 +174,10 @@ st.markdown("</div>", unsafe_allow_html=True)
 
 st.markdown("<br>", unsafe_allow_html=True)
 
-# Run Analysis Button
 run_btn = st.button("🚀 Run Smart Diagnostic Analysis")
 
 st.markdown("<br>", unsafe_allow_html=True)
 
-# Analysis Execution Logic
 if run_btn:
     clean_seq = gene_sequence.strip().upper()
     valid_dna_pattern = re.compile("^[ATCG]+$")
@@ -234,8 +240,7 @@ if run_btn:
                 st.warning(f"🟡 Moderate Alert - Potential Risk Requiring Follow-up (Risk Rate: {risk_score}%)")
             else:
                 st.error(f"🔴 High Risk Warning - Immediate Medical Intervention Required (Risk Rate: {risk_score}%)")
-        
-        st.markdown("<br>", unsafe_allow_html=True)
+st.markdown("<br>", unsafe_allow_html=True)
         st.markdown(f"""
         <div style='background-color: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0;'>
             <h4 style='color: #1e3a8a; margin-top: 0;'>🔬 Clinical Summary & Protocol</h4>
@@ -250,40 +255,4 @@ if run_btn:
 
 st.markdown("</div>", unsafe_allow_html=True)
 
-# --- الشريط الثاني المتحرك في نهاية الصفحة ---
 render_banner()
-# --- إضافة شريط متحرك ذكي في أسفل الصفحة ---
-st.markdown("""
-    <style>
-    .microbe-banner-bottom {
-        width: 100%;
-        height: 38px;
-        background: #f0f6ff;
-        position: relative;
-        overflow: hidden;
-        margin-top: 35px;
-        margin-bottom: 15px;
-    }
-    .microbe-banner-bottom::before {
-        content: "🧬 🔬 🧫 🦠 🧬 🔬 🧫 🦠 🧬 🔬 🧫 🦠 🧬 🔬 🧫 🦠 🧬 🔬 🧫 🦠 🧬 🔬 🧫 🦠";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 200%;
-        height: 100%;
-        font-size: 18px;
-        letter-spacing: 20px;
-        opacity: 0.85;
-        white-space: nowrap;
-        animation: slideBannerBottom 20s linear infinite;
-        display: flex;
-        align-items: center;
-        color: #1e3a8a;
-    }
-    @keyframes slideBannerBottom {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
-    }
-    </style>
-    <div class="microbe-banner-bottom"></div>
-""", unsafe_allow_html=True)
