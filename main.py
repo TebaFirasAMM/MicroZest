@@ -256,17 +256,3 @@ st.markdown(f"""
 st.markdown("</div>", unsafe_allow_html=True)
 
 render_banner()
-# تحسين ظهور الموقع في محركات البحث (SEO)
-st.markdown("""
-    <head>
-        <meta name="description" content="AI-Marshes Microbe - Advanced Microbial Risk Diagnostic & Ecosystem Analytics Platform">
-        <meta name="keywords" content="AI-Marshes Microbe, microbiology, risk assessment, Iraq, marshes pathogens">
-    </head>
-""", unsafe_allow_html=True)
-st.markdown("""
-    <head>
-        <meta name="description" content="AI-Marshes Microbe - Advanced Microbial Risk Diagnostic & Ecosystem Analytics Platform">
-        <meta name="keywords" content="AI-Marshes Microbe, microbiology, risk assessment, Iraq, marshes pathogens">
-        <meta name="google-site-verification" content="HWqpxre8en9xRc0gS2RG19FPSgjIMg_xvbbjuZNMIQ" />
-    </head>
-""", unsafe_allow_html=True)
