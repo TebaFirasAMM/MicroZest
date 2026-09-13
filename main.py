@@ -248,7 +248,8 @@ st.markdown(f"""
                 <li><b>Patient Profile:</b> {patient_category} | <b>Sample:</b> {sample_type}</li>
                 <li><b>Pathogen Detected:</b> {pathogen}</li>
                 <li><b>Biomarkers:</b> CRP: <code>{crp_input} mg/L</code> | WBC: <code>{wbc_input} cells/μL</code></li>
-                <li><b>Clinical Decision:</b> <b>{"Immediate medical attention & appropriate antibiotic therapy required." if risk_score >= 70 else "Condition stable; regular monitoring and preventive care advised."}</b></li>
+                <li><b>Clinical Decision:</b> <b>{"Immediate medical attention & appropriate antibiotic therapy required." 
+                                                  if risk_score >= 70 else "Condition stable; regular monitoring and preventive care advised."}</b></li>
             </ul>
         </div>
         """, unsafe_allow_html=True)
