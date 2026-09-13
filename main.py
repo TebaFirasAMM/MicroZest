@@ -256,7 +256,7 @@ st.markdown(f"""
 st.markdown("</div>", unsafe_allow_html=True)
 
 render_banner()
- تحسين ظهور الموقع في محركات البحث (SEO)
+ تحسين ظهور الموقع في محركات البحث (SEO)#
 st.markdown("""
     <head>
         <meta name="description" content="AI-Marshes Microbe - Advanced Microbial Risk Diagnostic & Ecosystem Analytics Platform">
