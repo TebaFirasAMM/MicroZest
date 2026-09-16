@@ -17,6 +17,7 @@
         
         /* شريط التنقل العلوي */
         header { background: var(--card-bg); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+       
         .logo-area { display: flex; align-items: center; gap: 10px; font-weight: bold; font-size: 1.2rem; color: var(--primary-color); }
         .nav-links { display: flex; gap: 20px; align-items: center; }
         .nav-item { cursor: pointer; color: #666; text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 5px; }
