@@ -1,198 +1,1682 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" id="htmlRoot">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">MicroZest - منصة تخمير قشور الفواكه الحيوية</title>
-    <style>
-        body { font-family: Tahoma, sans-serif; background-color: #f4f9f5; color: #1f2d24; margin: 0; padding: 20px; direction: rtl; }
-        .container { max-width: 1100px; margin: 0 auto; background: #ffffff; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid #c8e6c9; }
-        
-        header { background: #1b4332; color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
-        .header-titles h1 { margin: 0; font-size: 1.8rem; }
-        .header-titles p { margin: 5px 0 0; font-size: 0.9rem; opacity: 0.85; }
-        
-        /* زر تغيير اللغة */
-        .lang-btn { background: #2d6a4f; color: white; border: 1px solid #52b788; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 0.9rem; transition: 0.2s; }
-        .lang-btn:hover { background: #52b788; }
+<html lang="ar" dir="rtl">
 
-        .content { display: flex; gap: 20px; padding: 25px; flex-wrap: wrap; justify-content: center; }
-        .card { background: #fafdfa; border: 1px solid #c8e6c9; border-radius: 12px; padding: 20px; width: 320px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
-        .card h3 { color: #1b4332; margin-top: 0; border-bottom: 2px solid #e8f5e9; padding-bottom: 8px; }
-        
-        .peels-list { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px; }
-        .peel-btn { background: #fff; border: 2px solid #2d6a4f; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; color: #2d6a4f; transition: 0.2s; }
-        .peel-btn.active { background: #2d6a4f; color: white; }
-        
-        input[type="date"], select { width: 100%; padding: 10px; margin-top: 10px; border: 1px solid #c8e6c9; border-radius: 8px; font-family: Tahoma, sans-serif; }
-        .result-box { margin-top: 15px; background: #e8f5e9; padding: 12px; border-radius: 8px; font-weight: bold; color: #1b4332; text-align: center; }
-        
-        /* صندوق التنبيهات الفورية */
-        .alert-box { margin-top: 12px; background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 10px; border-radius: 8px; font-size: 0.85rem; display: none; }
-    </style>
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>من قشور الفواكه</title>
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:
+        "Segoe UI",
+        Tahoma,
+        Arial,
+        sans-serif;
+
+    background:#f5f7f4;
+
+    color:#263b2d;
+
+    min-height:100vh;
+}
+
+
+/* =========================================================
+   COLORS
+========================================================= */
+
+:root{
+
+    --green-dark:#254f36;
+
+    --green:#3f7652;
+
+    --green-light:#eaf4ec;
+
+    --green-soft:#f3f8f3;
+
+    --border:#dce5dd;
+
+    --text:#263b2d;
+
+    --muted:#7b887f;
+
+    --white:#ffffff;
+
+    --yellow:#fff4c9;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header{
+
+    height:82px;
+
+    background:white;
+
+    border-bottom:1px solid #e5ebe6;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+}
+
+.header-inner{
+
+    width:min(1250px,94%);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+
+/* right */
+
+.header-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+}
+
+.header-link{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    color:#496151;
+
+    font-size:14px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.header-link:hover{
+
+    color:var(--green);
+
+}
+
+
+/* logo */
+
+.logo{
+
+    text-align:center;
+
+}
+
+.logo-title{
+
+    color:var(--green-dark);
+
+    font-size:27px;
+
+    font-weight:800;
+
+}
+
+.logo-sub{
+
+    color:#7c887f;
+
+    font-size:11px;
+
+    margin-top:2px;
+
+}
+
+
+/* left */
+
+.home{
+
+    color:var(--green);
+
+    font-size:14px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+
+    width:100%;
+
+    min-height:270px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f7ead4 0%,
+            #f5f0dc 38%,
+            #e6f0e6 100%
+        );
+
+    border-bottom:1px solid #dfe7df;
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+.hero-inner{
+
+    width:min(1250px,94%);
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:50px;
+
+}
+
+.hero-text{
+
+    flex:1;
+
+}
+
+.hero-title{
+
+    color:var(--green-dark);
+
+    font-size:38px;
+
+    font-weight:800;
+
+    line-height:1.45;
+
+    margin-bottom:10px;
+
+}
+
+.hero-description{
+
+    color:#68766d;
+
+    font-size:17px;
+
+}
+
+.hero-visual{
+
+    width:390px;
+
+    height:190px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:20px;
+
+}
+
+.fruit-bowl{
+
+    width:190px;
+
+    height:145px;
+
+    background:
+        radial-gradient(
+            circle at 30% 40%,
+            #ffb44a 0 13%,
+            transparent 14%
+        ),
+        radial-gradient(
+            circle at 60% 30%,
+            #ffcf52 0 13%,
+            transparent 14%
+        ),
+        radial-gradient(
+            circle at 50% 70%,
+            #e9832c 0 16%,
+            transparent 17%
+        ),
+        #d69a52;
+
+    border-radius:20px 20px 80px 80px;
+
+    box-shadow:
+        inset 0 -20px 20px rgba(90,45,10,.15),
+        0 10px 20px rgba(0,0,0,.08);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:60px;
+
+}
+
+.jar{
+
+    width:110px;
+
+    height:145px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.45),
+            rgba(246,190,77,.75),
+            rgba(255,255,255,.35)
+        );
+
+    border:4px solid rgba(120,85,35,.18);
+
+    border-radius:14px 14px 24px 24px;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+[9/20/2026 6:59 PM] طيبة فراس: font-size:45px;
+
+}
+
+.jar:before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-14px;
+
+    width:92px;
+
+    height:18px;
+
+    background:#b89563;
+
+    border-radius:8px;
+
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+main{
+
+    width:min(1250px,94%);
+
+    margin:30px auto 50px;
+
+}
+
+
+/* =========================================================
+   STEPS GRID
+========================================================= */
+
+.steps-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:22px;
+
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.card{
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:25px;
+
+    padding:24px;
+
+    box-shadow:
+        0 5px 20px rgba(40,70,50,.05);
+
+    min-height:440px;
+
+}
+
+.card-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:17px;
+
+}
+
+.step-number{
+
+    width:50px;
+
+    height:50px;
+
+    background:var(--green);
+
+    color:white;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:22px;
+
+    font-weight:800;
+
+    box-shadow:0 4px 10px rgba(50,100,65,.2);
+
+}
+
+.step-arrow{
+
+    color:var(--green);
+
+    font-size:28px;
+
+}
+
+.card-title{
+
+    font-size:22px;
+
+    font-weight:800;
+
+    color:#304f3b;
+
+    margin-bottom:4px;
+
+}
+
+.card-subtitle{
+
+    color:#89948c;
+
+    font-size:13px;
+
+    margin-bottom:22px;
+
+}
+
+
+/* =========================================================
+   FRUITS
+========================================================= */
+
+.fruits-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:10px;
+
+}
+
+.fruit{
+
+    border:2px solid #e2e7e3;
+
+    background:#fff;
+
+    border-radius:17px;
+
+    padding:13px 7px;
+
+    min-height:105px;
+
+    cursor:pointer;
+
+    text-align:center;
+
+    position:relative;
+
+    transition:.2s;
+
+}
+
+.fruit:hover{
+
+    border-color:#8ab397;
+
+    transform:translateY(-2px);
+
+}
+
+.fruit.selected{
+
+    border-color:var(--green);
+
+    background:#f0f8f2;
+
+    box-shadow:
+        0 0 0 2px rgba(63,118,82,.08);
+
+}
+
+.fruit-icon{
+
+    font-size:37px;
+
+    margin-bottom:5px;
+
+}
+
+.fruit-name{
+
+    font-size:12px;
+
+    font-weight:700;
+
+    color:#39483e;
+
+}
+
+.check{
+
+    position:absolute;
+
+    top:6px;
+
+    left:6px;
+
+    width:20px;
+
+    height:20px;
+
+    border-radius:50%;
+
+    background:#4c8a60;
+
+    color:white;
+
+    font-size:12px;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.fruit.selected .check{
+
+    display:flex;
+
+}
+
+
+/* =========================================================
+   DATE AREA
+========================================================= */
+
+.date-box{
+
+    border:1px solid #e1e7e2;
+
+    border-radius:18px;
+
+    background:#fbfcfb;
+
+    padding:15px;
+
+}
+
+.month-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:15px;
+
+    font-weight:800;
+
+    color:#405148;
+
+}
+
+.month-button{
+
+    width:32px;
+
+    height:32px;
+
+    border:none;
+
+    background:#edf4ee;
+
+    color:var(--green);
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    font-size:20px;
+
+}
+
+.weekdays{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(7,1fr);
+
+    text-align:center;
+
+    color:#929b95;
+
+    font-size:10px;
+
+    margin-bottom:7px;
+
+}
+
+.calendar{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(7,1fr);
+
+    gap:5px;
+
+}
+
+.calendar-day{
+
+    width:32px;
+
+    height:32px;
+
+    margin:auto;
+
+    border:none;
+
+    background:transparent;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    color:#59645c;
+
+    font-size:12px;
+
+}
+
+.calendar-day:hover{
+
+    background:#e5f0e7;
+
+}
+
+.calendar-day.selected{
+
+    background:var(--green);
+
+    color:white;
+
+    font-weight:800;
+
+}
+
+.calendar-day.empty{
+
+    cursor:default;
+
+}
+[9/20/2026 6:59 PM] طيبة فراس: /* =========================================================
+   TIME
+========================================================= */
+
+.time-box{
+
+    margin-top:13px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    border:1px solid #e0e6e1;
+
+    border-radius:13px;
+
+    padding:12px;
+
+    background:white;
+
+}
+
+.time-box label{
+
+    color:#66736a;
+
+    font-size:13px;
+
+}
+
+.time-input{
+
+    border:none;
+
+    outline:none;
+
+    background:#f5f8f5;
+
+    padding:7px 10px;
+
+    border-radius:8px;
+
+    color:#3b4d40;
+
+    font-family:inherit;
+
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.primary-button{
+
+    width:100%;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:var(--green);
+
+    color:white;
+
+    padding:13px;
+
+    font-family:inherit;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    margin-top:15px;
+
+    transition:.2s;
+
+}
+
+.primary-button:hover{
+
+    background:#315f42;
+
+    transform:translateY(-1px);
+
+}
+
+.primary-button:disabled{
+
+    background:#c5d0c7;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+}
+
+
+/* =========================================================
+   MONITOR
+========================================================= */
+
+.monitor-item{
+
+    border:1px solid #e1e7e2;
+
+    background:#fbfcfb;
+
+    border-radius:17px;
+
+    padding:14px;
+
+    margin-bottom:11px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:12px;
+
+}
+
+.monitor-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:11px;
+
+}
+
+.monitor-icon{
+
+    width:43px;
+
+    height:43px;
+
+    border-radius:50%;
+
+    background:#eaf4ec;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:20px;
+
+}
+
+.monitor-label{
+
+    font-size:11px;
+
+    color:#879189;
+
+    margin-bottom:3px;
+
+}
+
+.monitor-value{
+
+    font-size:13px;
+
+    font-weight:800;
+
+    color:#39483e;
+
+}
+
+.status{
+
+    padding:5px 10px;
+
+    border-radius:20px;
+
+    background:#dff2e3;
+
+    color:#357448;
+
+    font-size:10px;
+
+    font-weight:800;
+
+    white-space:nowrap;
+
+}
+
+
+/* =========================================================
+   SELECTS
+========================================================= */
+
+.monitor-select{
+
+    width:100%;
+
+    border:1px solid #dfe6e0;
+
+    background:white;
+
+    border-radius:10px;
+
+    padding:8px;
+
+    margin-top:7px;
+
+    font-family:inherit;
+
+    color:#3c4c42;
+
+    outline:none;
+
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.progress-section{
+
+    margin-top:22px;
+
+    background:
+        linear-gradient(
+            110deg,
+            #f5faf5,
+            #e8f2e9
+        );
+
+    border:1px solid #d7e4d9;
+
+    border-radius:25px;
+
+    padding:25px;
+
+}
+
+.progress-title{
+
+    font-size:19px;
+
+    color:#315d40;
+
+    font-weight:800;
+
+    margin-bottom:25px;
+
+}
+
+.progress-container{
+
+    max-width:850px;
+
+    margin:auto;
+
+    position:relative;
+
+}
+
+.progress-line{
+
+    position:absolute;
+
+    top:14px;
+
+    right:7%;
+
+    left:7%;
+
+    height:5px;
+
+    background:#c9d9cc;
+
+    border-radius:10px;
+
+}
+
+.progress-filled{
+
+    position:absolute;
+
+    top:14px;
+
+    right:7%;
+
+    height:5px;
+
+    width:46%;
+
+    background:#60936c;
+
+    border-radius:10px;
+
+    transition:.5s;
+
+}
+
+.progress-points{
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:space-between;
+
+}
+
+.progress-point{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    z-index:2;
+
+}
+
+.point-circle{
+
+    width:29px;
+
+    height:29px;
+
+    background:white;
+
+    border:3px solid #86a68d;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:white;
+
+    font-size:12px;
+
+    transition:.3s;
+
+}
+
+.progress-point.active .point-circle{
+
+    background:#4d855b;
+
+    border-color:#4d855b;
+
+}
+
+.point-label{
+
+    margin-top:8px;
+
+    font-size:11px;
+
+    color:#667269;
+ font-weight:700
+
+
+
+/* =========================================================
+   INFO
+========================================================= */
+
+.info-row{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:20px;
+
+    margin-top:20px;
+
+}
+
+.info-box{
+
+    border-radius:20px;
+
+    padding:18px;
+
+    border:1px solid #e2e7e2;
+
+    background:white;
+
+}
+
+.info-box.warning{
+
+    background:#fff8da;
+
+    border-color:#eee0a3;
+
+}
+
+.info-title{
+
+    font-weight:800;
+
+    margin-bottom:7px;
+
+    color:#405247;
+
+}
+
+.info-text{
+
+    font-size:12px;
+
+    color:#69756d;
+
+    line-height:1.8;
+
+}
+
+
+/* =========================================================
+   NOTIFICATION
+========================================================= */
+
+.notification{
+
+    position:fixed;
+
+    bottom:25px;
+
+    left:50%;
+
+    transform:
+        translate(-50%,120px);
+
+    background:#294f37;
+
+    color:white;
+
+    padding:13px 20px;
+
+    border-radius:12px;
+
+    font-size:13px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.2);
+
+    transition:.35s;
+
+    z-index:999;
+
+}
+
+.notification.show{
+
+    transform:
+        translate(-50%,0);
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+    .steps-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .hero-inner{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .hero-title{
+
+        font-size:29px;
+
+    }
+
+    .hero-visual{
+
+        width:100%;
+
+    }
+
+    .info-row{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    header{
+
+        height:auto;
+
+        padding:12px 0;
+
+    }
+
+    .header-inner{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+    }
+
+    .header-right{
+
+        order:3;
+
+        width:100%;
+
+        justify-content:center;
+
+    }
+
+    .home{
+
+        display:none;
+
+    }
+
+    .logo-title{
+
+        font-size:22px;
+
+    }
+
+    .hero{
+
+        min-height:300px;
+
+    }
+
+    .hero-title{
+
+        font-size:25px;
+
+    }
+
+    .hero-visual{
+
+        transform:scale(.8);
+
+        margin-top:-15px;
+
+    }
+
+    main{
+
+        width:92%;
+
+    }
+
+    .card{
+
+        padding:18px;
+
+    }
+
+}
+
+
+/* =========================================================
+   HIDDEN
+========================================================= */
+
+.hidden{
+
+    display:none !important;
+
+}
+
+</style>
+
 </head>
+
+
+
 <body>
 
-    <div class="container">
-        <header>
-            <div class="header-titles">
-                <h1 id="mainTitle">MicroZest 🌿</h1>
-                <p id="subTitle">منصة ذكية لتحليل وتتبع تخمير قشور الفواكه الحيوية</p>
-            </div>
-            <button class="lang-btn" onclick="toggleLanguage()" id="langToggleBtn">English</button>
-        </header>
 
-        <div class="content">
-            <!-- الخطوة 1 -->
-            <div class="card">
-                <h3 id="step1Title">1. اختر نوع القشور</h3>
-                <p style="font-size: 0.85rem; color: #555;" id="step1Desc">انقر لتحديد القشور المستخدمة وتأكيد الاختيار:</p>
-                <div class="peels-list">
-                    <button class="peel-btn active" onclick="selectPeel(this, 'برتقال', 'Orange')">🍊 <span class="p-name">برتقال</span></button>
-                    <button class="peel-btn active" onclick="selectPeel(this, 'ليمون', 'Lemon')">🍋 <span class="p-name">ليمون</span></button>
-                    <button class="peel-btn" onclick="selectPeel(this, 'تفاح', 'Apple')">🍎 <span class="p-name">تفاح</span></button>
-                    <button class="peel-btn" onclick="selectPeel(this, 'موز', 'Banana')">🍌 <span class="p-name">موز</span></button>
-                </div>
-                <div class="alert-box" id="peelAlert"></div>
-            </div>
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
-            <!-- الخطوة 2 -->
-            <div class="card">
-                <h3 id="step2Title">2. تاريخ بدء التخمير</h3>
-                <p style="font-size: 0.85rem; color: #555;" id="step2Desc">حدد تاريخ بدء العمل في المختبر:</p>
-                <input type="date" id="dateInput" onchange="calculateDays()">
-                <div class="result-box" id="daysResult">الأيام المنقضية: 3 أيام</div>
-            </div>
+<header>
 
-            <!-- الخطوة 3 -->
-            <div class="card">
-                <h3 id="step3Title">3. متابعة التخمير</h3>
-                <p style="font-size: 0.85rem; color: #555;" id="step3Desc">الملاحظات الحيوية للتفاعل:</p>
-                <label style="font-size: 0.8rem; font-weight: bold;" id="appearanceLabel">المظهر العام:</label>
-                <select id="appearance">
-                    <option id="opt1">ظهور فقاعات غازية خفيفة وتصاعد تدريجي</option>
-                    <option id="opt2">تفاعل نشط وتصاعد فقاعات مستمر</option>
-                    <option id="opt3">اكتمال النضج وتصفية المحلول الحيوي</option>
-                </select>
-                
-                <label style="font-size: 0.8rem; font-weight: bold; display:block; margin-top:10px;" id="scentLabel">الرائحة المتكونة:</label>
-                <select id="scent">
-                    <option id="scent1">رائحة حمضيات قوية ونقية</option>
-                    <option id="scent2">رائحة خل ومركزات قوية جاهزة للاستخدام</option>
-                </select>
-            </div>
-        </div>
+<div class="header-inner">
+
+
+    <div class="home">
+
+        🏠 الرئيسية
+
     </div>
 
-    <script>
-        let currentLang = 'ar';
 
-        // ضبط تاريخ افتراضي قبل 3 أيام
-        const d = new Date();
-        d.setDate(d.getDate() - 3);
-        document.getElementById('dateInput').valueAsDate = d;
+    <div class="logo">
 
-        function calculateDays() {
-            const val = document.getElementById('dateInput').value;
-            if(!val) return;
-            const start = new Date(val);
-            const now = new Date();
-            const diff = Math.floor((now - start) / (1000 * 60 * 60 * 24));
-            const daysText = currentLang === 'ar' ? "الأيام المنقضية: " : "Elapsed Days: ";
-            const daysSuffix = currentLang === 'ar' ? " أيام" : " days";
-            document.getElementById('daysResult').innerText = daysText + (diff >= 0 ? diff : 0) + daysSuffix;
-        }
+        <div class="logo-title">
 
-        // دالة تحديد الفاكهة وإظهار الملاحظة التفاعلية
-        function selectPeel(btn, arName, enName) {
-            btn.classList.toggle('active');
-            const isActive = btn.classList.contains('active');
-            const name = currentLang === 'ar' ? arName : enName;
-            
-            const alertBox = document.getElementById('peelAlert');
-            alertBox.style.display = 'block';
-            
-            if (isActive) {
-                alertBox.style.background = '#d4edda';
-                alertBox.style.borderColor = '#c3e6cb';
-                alertBox.style.color = '#155724';
-                alertBox.innerText = currentLang === 'ar' 
-                    ? ✓ تم إضافة قشور الـ ${name} بنجاح إلى وعاء التخمير. 
-                    : ✓ ${name} peels successfully added to the fermentation vessel.;
-            } else {
-                alertBox.style.background = '#f8d7da';
-                alertBox.style.borderColor = '#f5c6cb';
-                alertBox.style.color = '#721c24';
-                alertBox.innerText = currentLang === 'ar' 
-                    ? ✗ تم إزالة قشور الـ ${name} من التخمير. 
-                    : ✗ ${name} peels removed from fermentation.;
+            🍃 من قشور الفواكه
+
+        </div>
+
+        <div class="logo-sub">
+
+            نحو منزل أنظف .. بشكل طبيعي
+
+        </div>
+
+    </div>
+
+
+    <div class="header-right">
+
+        <div class="header-link">
+
+            ❓ مساعدة
+
+        </div>
+
+        <div class="header-link">
+
+            ⚙️ الإعدادات
+
+        </div>
+
+        <div class="header-link">
+
+            👤 حسابي
+
+        </div>
+
+    </div>
+
+
+</div>
+
+</header>
+
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+<div class="hero-inner">
+
+
+    <div class="hero-text">
+
+        <h1 class="hero-title">
+
+            حوّلي قشور الفواكه
+            <br>
+            إلى مطهرات طبيعية
+
+        </h1>
+
+
+        <p class="hero-description">
+
+            مبادرة منزلية بسيطة .. لبيئة أنظف وصحة أفضل
+
+        </p>
+
+    </div>
+
+
+
+    <div class="hero-visual">
+
+        <div class="fruit-bowl">
+
+            🍊🍋🍎
+
+        </div>
+
+        <div class="jar">
+
+            🍊
+
+        </div>
+
+    </div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main>
+
+
+
+<div class="steps-grid">
+[9/20/2026 6:59 PM] طيبة فراس: point
+                    .querySelector(
+                        ".point-circle"
+                    )
+                    .textContent =
+                    "";
+
             }
+
+        }
+    );
+
+
+    const progress =
+        document.getElementById(
+            "progressFilled"
+        );
+
+
+    const widths = [
+
+        "0%",
+
+        "30%",
+
+        "55%",
+
+        "80%",
+
+        "93%"
+
+    ];
+
+
+    progress.style.width =
+        widths[level];
+
+}
+
+
+/* =========================================================
+   OBSERVATIONS
+========================================================= */
+
+function updateObservation(){
+
+    updateStatus(
+        "acidity",
+        "acidityStatus"
+    );
+
+
+    updateStatus(
+        "appearance",
+        "appearanceStatus"
+    );
+
+
+    updateStatus(
+        "smell",
+        "smellStatus"
+    );
+
+
+    showNotification(
+        "تم تحديث الملاحظات"
+    );
+
+}
+
+
+function updateStatus(
+    selectId,
+    statusId
+){
+
+    const select =
+        document.getElementById(
+            selectId
+        );
+
+
+    const status =
+        document.getElementById(
+            statusId
+        );
+
+
+    const value =
+        select.value;
+
+
+    if(value === "غير محدد"){
+
+        status.textContent =
+            "غير محدد";
+
+    }
+
+    else if(
+        value.includes("عفن")
+        ||
+        value.includes("كريهة")
+        ||
+        value.includes("غير طبيعي")
+    ){
+
+        status.textContent =
+            "انتبهي";
+
+        status.style.background =
+            "#fde4e1";
+
+        status.style.color =
+            "#a44339";
+
+    }
+
+    else{
+
+        status.textContent =
+            "مسجل";
+
+        status.style.background =
+            "#dff2e3";
+
+        status.style.color =
+            "#357448";
+
+    }
+
+}
+
+
+/* =========================================================
+   NOTIFICATION
+========================================================= */
+
+function showNotification(message){
+
+    const notification =
+        document.getElementById(
+            "notification"
+        );
+
+
+    notification.textContent =
+        message;
+
+
+    notification.classList.add(
+        "show"
+    );
+
+
+    clearTimeout(
+        window.notificationTimer
+    );
+
+
+    window.notificationTimer =
+        setTimeout(
+            function(){
+
+                notification.classList.remove(
+                    "show"
+                );
+
+            },
+            2200
+        );
+
+}
+
+
+/* =========================================================
+   INITIALIZATION
+========================================================= */
+
+calendarDate =
+    new Date();
+
+
+renderCalendar();
+
+
+updateStartButton();
+
+
+/*
+   تحديث حالة التخمر كل دقيقة
+   إذا كان المستخدم قد بدأ العملية.
+*/
+
+setInterval(
+    function(){
+
+        if(fermentationStarted){
+
+            calculateFermentation();
+
         }
 
-        // دالة تبديل اللغة (عربي / إنجليزي)
-        function toggleLanguage() {
-            const htmlRoot = document.getElementById('htmlRoot');
-            const langBtn = document.getElementById('langToggleBtn');
+    },
+    60000
+);
 
-            if (currentLang === 'ar') {
-                currentLang = 'en';
-                htmlRoot.setAttribute('lang', 'en');
-                htmlRoot.setAttribute('dir', 'ltr');
-                langBtn.innerText = 'عربي';
-                document.getElementById('pageTitle').innerText = "MicroZest - Bio Fruit Peels Fermentation Platform";
-                document.getElementById('mainTitle').innerText = "MicroZest 🌿";
-                document.getElementById('subTitle').innerText = "Smart platform for analyzing and tracking bio fruit peel fermentation";
-                
-                document.getElementById('step1Title').innerText = "1. Choose Peels";
-                document.getElementById('step1Desc').innerText = "Click to select and confirm used peels:";
-                
-                document.getElementById('step2Title').innerText = "2. Fermentation Start Date";
-                document.getElementById('step2Desc').innerText = "Select lab work start date:";
-                
-                document.getElementById('step3Title').innerText = "3. Fermentation Tracking";
-                document.getElementById('step3Desc').innerText = "Bio-interaction notes:";
-                document.getElementById('appearanceLabel').innerText = "General Appearance:";
-                
-                document.getElementById('opt1').innerText = "Light gas bubbles and gradual rise";
-                document.getElementById('opt2').innerText = "Active reaction and continuous bubbles";
-                document.getElementById('opt3').innerText = "Maturity complete and bio-solution filtered";
-                
-                document.getElementById('scentLabel').innerText = "Generated Scent:";
-                document.getElementById('scent1').innerText = "Strong and pure citrus scent";
-                document.getElementById('scent2').innerText = "Strong vinegar scent ready for use";
-                
-                calculateDays();
-            } else {
-                currentLang = 'ar';
-                htmlRoot.setAttribute('lang', 'ar');
-                htmlRoot.setAttribute('dir', 'rtl');
-                langBtn.innerText = 'English';
 
-                document.getElementById('pageTitle').innerText = "MicroZest - منصة تخمير قشور الفواكه الحيوية";
-                document.getElementById('mainTitle').innerText = "MicroZest 🌿";
-                document.getElementById('subTitle').innerText = "منصة ذكية لتحليل وتتبع تخمير قشور الفواكه الحيوية";
-                
-                document.getElementById('step1Title').innerText = "1. اختر نوع القشور";
-                document.getElementById('step1Desc').innerText = "انقر لتحديد القشور المستخدمة وتأكيد الاختيار:";
-                
-                document.getElementById('step2Title').innerText = "2. تاريخ بدء التخمير";
-                document.getElementById('step2Desc').innerText = "حدد تاريخ بدء العمل في المختبر:";
-                
-                document.getElementById('step3Title').innerText = "3. متابعة التخمير";
-                document.getElementById('step3Desc').innerText = "الملاحظات الحيوية للتفاعل:";
-                document.getElementById('appearanceLabel').innerText = "المظهر العام:";
-                
-                document.getElementById('opt1').innerText = "ظهور فقاعات غازية خفيفة وتصاعد تدريجي";
-                document.getElementById('opt2').innerText = "تفاعل نشط وتصاعد فقاعات مستمر";
-                document.getElementById('opt3').innerText = "اكتمال النضج وتصفية المحلول الحيوي";
-                
-                document.getElementById('scentLabel').innerText = "الرائحة المتكونة:";
-                document.getElementById('scent1').innerText = "رائحة حمضيات قوية ونقية";
-                document.getElementById('scent2').innerText = "رائحة خل ومركزات قوية جاهزة للاستخدام";
-                
-                calculateDays();
-            }
+/*
+   منع إرسال الصفحة إذا ضغط Enter
+*/
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Enter"
+            &&
+            event.target.tagName !== "SELECT"
+        ){
+
+            event.preventDefault();
+
         }
-    </script>
+
+    }
+);
+
+</script>
+
+
 </body>
+
 </html>
