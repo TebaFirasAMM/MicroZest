@@ -3,90 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MicroZest - منصة تتبع تخمير القشور</title>
+    <title>MicroZest - منصة تخمير قشور الفواكه</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-green: #1b4332;
-            --accent-green: #2d6a4f;
-            --bg-page: #f4f7f5;
-            --card-shadow: 0 14px 35px rgba(27, 67, 50, 0.07);
-            --card-border: rgba(45, 106, 79, 0.12);
+            --primary-green: #254630;
+            --accent-green: #366946;
+            --bg-page: #f4f8f5;
+            --card-shadow: 0 12px 35px rgba(37, 70, 48, 0.07);
+            --card-border: rgba(54, 105, 70, 0.14);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: var(--bg-page); color: #213526; padding: 25px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; }
+        body { background-color: var(--bg-page); color: #233328; padding: 25px; }
 
-        .container { max-width: 1240px; margin: 0 auto; background: #ffffff; border-radius: 26px; box-shadow: 0 25px 50px rgba(0,0,0,0.04); overflow: hidden; border: 1px solid rgba(205, 222, 212, 0.7); }
+        .container { max-width: 1240px; margin: 0 auto; background: #ffffff; border-radius: 28px; box-shadow: 0 25px 50px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid rgba(210, 227, 215, 0.7); }
 
-        /* الشريط العلوي الواقعي */
-        header { display: flex; justify-content: space-between; align-items: center; padding: 22px 40px; background: #ffffff; border-bottom: 1px solid #edf2ed; }
+        /* الشريط العلوي */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 22px 40px; background: #ffffff; border-bottom: 1px solid #edf4ef; }
         .nav-right, .nav-left { display: flex; align-items: center; gap: 24px; }
-        .nav-item { display: flex; align-items: center; gap: 8px; color: #52705d; text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: 0.2s; }
+        .nav-item { display: flex; align-items: center; gap: 8px; color: #4a6652; text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: 0.2s; }
         .nav-item:hover { color: var(--primary-green); }
         
         .logo-area { text-align: center; }
-        .logo-title { font-size: 1.65rem; font-weight: 800; color: var(--primary-green); display: flex; align-items: center; justify-content: center; gap: 10px; letter-spacing: -0.5px; }
-        .logo-sub { font-size: 0.8rem; color: #73947e; margin-top: 3px; font-weight: 500; }
+        .logo-title { font-size: 1.7rem; font-weight: 900; color: var(--primary-green); display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .logo-sub { font-size: 0.82rem; color: #73947e; margin-top: 3px; font-weight: 500; }
 
-        /* البانر العلوي مع تدرج حقيقي وصورة خلفية ناعمة */
+        /* الهيدر البانر */
         .hero-banner {
             position: relative;
-            background: linear-gradient(135deg, rgba(20, 50, 37, 0.88) 0%, rgba(35, 77, 52, 0.78) 100%), url('https://images.unsplash.com/photo-1543168257-4ba7af1c3e54?auto=format&fit=crop&w=1400&q=80') center/cover;
-            height: 230px;
+            background: linear-gradient(135deg, rgba(28, 56, 37, 0.88) 0%, rgba(45, 87, 59, 0.78) 100%), url('https://images.unsplash.com/photo-1543168257-4ba7af1c3e54?auto=format&fit=crop&w=1400&q=80') center/cover;
+            height: 240px;
             display: flex;
             align-items: center;
             padding: 0 50px;
             color: white;
-            box-shadow: inset 0 -20px 30px rgba(0,0,0,0.12);
+            box-shadow: inset 0 -20px 30px rgba(0,0,0,0.15);
         }
-        .hero-content h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; text-shadow: 0 2px 8px rgba(0,0,0,0.25); letter-spacing: -0.5px; }
-        .hero-content p { font-size: 1.02rem; opacity: 0.92; text-shadow: 0 1px 4px rgba(0,0,0,0.2); font-weight: 400; }
+        .hero-content h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 8px; text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+        .hero-content p { font-size: 1.05rem; opacity: 0.92; text-shadow: 0 1px 4px rgba(0,0,0,0.25); }
 
-        /* منطقة الخطوات الثلاث بتصميم واقعي */
+        /* الأقسام الثلاثة الرئيسية */
         .steps-section { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; padding: 40px; background: #ffffff; }
         
-        .step-box { background: linear-gradient(180deg, #fafdfb 0%, #f3f8f4 100%); border: 1px solid var(--card-border); border-radius: 20px; padding: 30px 22px; position: relative; text-align: center; box-shadow: var(--card-shadow); transition: transform 0.3s ease; }
-        .step-box:hover { transform: translateY(-3px); }
+        .step-box { background: linear-gradient(180deg, #fafdfb 0%, #f4f9f6 100%); border: 1px solid var(--card-border); border-radius: 22px; padding: 30px 22px; position: relative; text-align: center; box-shadow: var(--card-shadow); }
+        .step-num { position: absolute; top: -20px; right: 50%; transform: translateX(50%); background: linear-gradient(135deg, #2d593d 0%, var(--primary-green) 100%); color: white; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; box-shadow: 0 6px 16px rgba(37,70,48,0.25); border: 2px solid #ffffff; }
         
-        .step-num { position: absolute; top: -18px; right: 50%; transform: translateX(50%); background: linear-gradient(135deg, #2d6a4f 0%, var(--primary-green) 100%); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.15rem; box-shadow: 0 6px 16px rgba(27,67,50,0.22); border: 2px solid #ffffff; }
-        
-        .step-title { font-size: 1.2rem; font-weight: 700; color: var(--primary-green); margin-top: 16px; margin-bottom: 6px; }
+        .step-title { font-size: 1.25rem; font-weight: 700; color: var(--primary-green); margin-top: 18px; margin-bottom: 6px; }
         .step-desc { font-size: 0.85rem; color: #73947e; margin-bottom: 22px; }
 
-        /* شبكة القشور المحدثة (تفاح، برتقال، ليمون فقط) */
+        /* شبكة القشور (برتقال، ليمون، تفاح فقط) */
         .peels-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-        .peel-card { background: rgba(255, 255, 255, 0.92); border: 1.5px solid #d4e5d8; border-radius: 14px; padding: 18px 8px; cursor: pointer; transition: all 0.25s ease; position: relative; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
-        .peel-card:hover { border-color: var(--accent-green); box-shadow: 0 6px 15px rgba(45,106,79,0.08); }
-        .peel-card.active { border-color: var(--primary-green); background: #ebf5ee; box-shadow: 0 6px 15px rgba(27,67,50,0.1); }
+        .peel-card { background: rgba(255, 255, 255, 0.95); border: 1.5px solid #d4e5d8; border-radius: 14px; padding: 18px 8px; position: relative; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+        .peel-card.active { border-color: var(--primary-green); background: #ebf5ee; box-shadow: 0 6px 15px rgba(37,70,48,0.12); }
         .peel-card span { font-size: 0.82rem; font-weight: 700; color: #2d4536; display: block; margin-top: 6px; }
-        .check-mark { position: absolute; top: 6px; left: 6px; background: #2d6a4f; color: white; width: 16px; height: 16px; border-radius: 50%; font-size: 0.65rem; display: flex; align-items: center; justify-content: center; display: none; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
-        .peel-card.active .check-mark { display: flex; }
+        .check-mark { position: absolute; top: 6px; left: 6px; background: #2e7d32; color: white; width: 16px; height: 16px; border-radius: 50%; font-size: 0.65rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
 
-        /* عناصر المتابعة في الخطوة 3 */
-        .status-item { background: rgba(255,255,255,0.9); border: 1px solid #d8e8dc; border-radius: 14px; padding: 14px 18px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; text-align: right; box-shadow: 0 3px 8px rgba(0,0,0,0.02); }
-        .status-label { font-size: 0.9rem; font-weight: 700; display: flex; align-items: center; gap: 10px; color: #2c4233; }
-        .status-badge { background: #e2f2e5; color: #1b4332; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; box-shadow: inset 0 1px 2px rgba(255,255,255,0.8); }
-
-        /* قسم سجل ملاحظات اليوم بتأثير زجاجي ناعم */
-        .daily-notes-section { background: linear-gradient(135deg, #f0f7f2 0%, #e6f2eb 100%); margin: 0 40px 30px 40px; border-radius: 22px; padding: 30px 35px; border: 1px solid rgba(190, 219, 198, 0.6); box-shadow: inset 0 2px 6px rgba(255,255,255,0.8); }
-        .notes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 18px; }
-        .note-card { background: #ffffff; border: 1px solid #d4e5d8; border-radius: 16px; padding: 20px; box-shadow: 0 6px 18px rgba(0,0,0,0.03); }
-        .note-card h4 { font-size: 0.92rem; font-weight: 700; color: var(--primary-green); margin-bottom: 12px; }
+        /* قسم شريط التطور التفاعلي (مشابه للصورة تماماً) */
+        .progress-section { background: linear-gradient(135deg, #f0f7f2 0%, #e6f2eb 100%); margin: 0 40px 30px 40px; border-radius: 24px; padding: 35px; border: 1px solid rgba(190, 219, 198, 0.6); box-shadow: inset 0 2px 6px rgba(255,255,255,0.8); display: flex; justify-content: space-between; align-items: center; }
+        .progress-content { flex: 1; margin-left: 30px; }
+        .progress-content h3 { font-size: 1.25rem; color: var(--primary-green); margin-bottom: 15px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
         
-        .opt-btn { display: block; width: 100%; background: #f8faf9; border: 1px solid #dce8df; padding: 10px 12px; border-radius: 10px; font-size: 0.82rem; margin-bottom: 8px; cursor: pointer; text-align: right; color: #344d3d; font-weight: 500; transition: all 0.2s ease; }
-        .opt-btn:hover { background: #f0f5f2; border-color: #b8d2be; }
-        .opt-btn.selected { background: linear-gradient(135deg, #2d6a4f 0%, var(--primary-green) 100%); color: white; border-color: var(--primary-green); font-weight: 700; box-shadow: 0 4px 12px rgba(27,67,50,0.22); }
-
-        /* تحليل الملاحظات الفوري */
-        .analysis-box { background: linear-gradient(135deg, #e4f2e8 0%, #d8ebd0 100%); border: 1px solid #b7d6bc; border-radius: 18px; padding: 22px 28px; margin: 0 40px 30px 40px; box-shadow: 0 8px 20px rgba(45,106,79,0.05); }
-        .analysis-box h4 { color: #163b25; margin-bottom: 8px; font-size: 1rem; font-weight: 800; display: flex; align-items: center; gap: 8px; }
-        .analysis-box p { font-size: 0.92rem; color: #264230; line-height: 1.6; font-weight: 500; }
+        /* شريط التطور الخطي */
+        .timeline-bar-wrap { position: relative; margin: 30px 0; }
+        .timeline-line { height: 6px; background: #d0e2d5; border-radius: 3px; width: 100%; position: relative; }
+        .timeline-progress-fill { position: absolute; height: 100%; background: var(--primary-green); border-radius: 3px; width: 0%; transition: width 1s ease; }
+        .timeline-nodes { display: flex; justify-content: space-between; position: absolute; top: -6px; width: 100%; }
+        .node { width: 18px; height: 18px; background: #ffffff; border: 4px solid #d0e2d5; border-radius: 50%; transition: 0.3s; }
+        .node.active { border-color: var(--primary-green); background: var(--primary-green); }
+        .timeline-labels { display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.85rem; font-weight: 700; color: #4a6652; }
+        
+        .progress-note { background: #fffbe6; border: 1px solid #ffe58f; padding: 15px; border-radius: 14px; width: 240px; font-size: 0.85rem; color: #8c6d1f; box-shadow: 0 4px 12px rgba(0,0,0,0.02); text-align: center; font-weight: 600; }
 
         /* زر التقاط الصورة السفلي الواقعي */
-        .footer-action { background: #ffffff; border-top: 1px solid #edf2ed; padding: 28px 40px; display: flex; justify-content: center; align-items: center; }
-        .capture-btn { display: flex; align-items: center; gap: 18px; background: linear-gradient(135deg, #f4f9f5 0%, #ebf5ee 100%); border: 1.5px solid #b8d4be; padding: 14px 40px; border-radius: 50px; cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 10px 25px rgba(27,67,50,0.07); }
-        .capture-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(27,67,50,0.12); border-color: var(--primary-green); }
-        .capture-icon-wrap { width: 50px; height: 50px; background: linear-gradient(135deg, #2d6a4f 0%, var(--primary-green) 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; box-shadow: 0 6px 16px rgba(27,67,50,0.25); }
+        .footer-action { background: #ffffff; border-top: 1px solid #edf4ef; padding: 28px 40px; display: flex; justify-content: center; align-items: center; }
+        .capture-btn { display: flex; align-items: center; gap: 18px; background: linear-gradient(135deg, #f4f9f5 0%, #ebf5ee 100%); border: 1.5px solid #b8d4be; padding: 14px 40px; border-radius: 50px; cursor: pointer; transition: all 0.3s; box-shadow: 0 10px 25px rgba(37,70,48,0.08); }
+        .capture-btn:hover { transform: translateY(-3px); border-color: var(--primary-green); }
+        .capture-icon-wrap { width: 50px; height: 50px; background: linear-gradient(135deg, #2d593d 0%, var(--primary-green) 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
         .capture-text h4 { font-size: 1.02rem; color: var(--primary-green); font-weight: 800; margin-bottom: 3px; }
         .capture-text p { font-size: 0.82rem; color: #6b8f79; font-weight: 500; }
     </style>
@@ -94,7 +87,7 @@
 <body>
 
     <div class="container">
-        <!-- الشريط العلوي مع اسم MicroZest -->
+        <!-- الشريط العلوي -->
         <header>
             <div class="nav-right">
                 <a href="#" class="nav-item"><span>🏠</span> الرئيسية</a>
@@ -104,7 +97,7 @@
                 <div class="logo-title">
                     <span>🔬</span> MicroZest
                 </div>
-                <div class="logo-sub">منصة ذكية لتحليل وتتبع تخمير قشور الفواكه</div>
+                <div class="logo-sub">منصة ذكية لتحليل وتتبع تخمير قشور الفواكه الحيوية</div>
             </div>
 
             <div class="nav-left">
@@ -113,124 +106,128 @@
                 <a href="#" class="nav-item"><span>👤</span> حسابي</a>
             </div>
         </header>
-
-        <!-- الهيدر البانر الواقعي -->
+          <!-- البانر -->
         <div class="hero-banner">
             <div class="hero-content">
-                <h1>تتبع عملية تخمر قشور الحمضيات والتفاح بدقة</h1>
-                <p>مشروع تخرج أكاديمي لإنتاج مطهرات حيوية مستدامة وآمنة</p>
+                <h1>حولي قشور الفواكه إلى مطهرات طبيعية</h1>
+                <p>مبادرة منزلية وبحث أكاديمي متطور .. لبيئة أنظف وصحة أفضل</p>
             </div>
         </div>
 
-        <!-- الخطوات الثلاث بتصميم واقعي متطور -->
+        <!-- الخطوات الثلاث -->
         <div class="steps-section">
-            <!-- خطوة 1: القشور المعتمدة (برتقال، ليمون، تفاح) -->
             <div class="step-box">
                 <div class="step-num">1</div>
                 <div class="step-title">اختر نوع القشور</div>
-                <div class="step-desc">تم اختيار (برتقال، ليمون، تفاح)</div>
+                <div class="step-desc">تم اختيار الحمضيات والتفاح حصراً</div>
                 <div class="peels-grid">
                     <div class="peel-card active">
                         <div class="check-mark">✓</div>
-                        <div style="font-size: 1.5rem;">🍊</div>
+                        <div style="font-size: 1.4rem;">🍊</div>
                         <span>برتقال</span>
                     </div>
                     <div class="peel-card active">
                         <div class="check-mark">✓</div>
-                        <div style="font-size: 1.5rem;">🍋</div>
+                        <div style="font-size: 1.4rem;">🍋</div>
                         <span>ليمون</span>
                     </div>
                     <div class="peel-card active">
                         <div class="check-mark">✓</div>
-                        <div style="font-size: 1.5rem;">🍎</div>
+                        <div style="font-size: 1.4rem;">🍎</div>
                         <span>تفاح</span>
                     </div>
                 </div>
             </div>
 
-            <!-- خطوة 2 -->
             <div class="step-box">
                 <div class="step-num">2</div>
                 <div class="step-title">تاريخ بدء التخمير</div>
-                <div class="step-desc">تم البدء في: 18 / 09 / 2026</div>
-                <div style="background: rgba(255,255,255,0.92); border: 1px solid #d4e5d8; border-radius: 16px; padding: 22px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
-                    <div style="font-size: 1.15rem; font-weight: 800; color: var(--primary-green); margin-bottom: 6px;">اليوم الحالي: اليوم الثاني</div>
-                    <p style="font-size: 0.88rem; color: #6b8f79; font-weight: 500;">التاريخ اليوم: 20 / 09 / 2026</p>
-                    <div style="margin-top: 15px; background: #e2f2e5; padding: 9px; border-radius: 10px; font-size: 0.82rem; color: #1b4332; font-weight: 700; box-shadow: inset 0 1px 2px rgba(255,255,255,0.8);">
-                        🟢 عملية التخمير نشطة ومستمرة
+                <div class="step-desc">حدد اليوم الذي بدأت فيه العملية</div>
+                <div style="background: rgba(255,255,255,0.9); border: 1px solid #d4e5d8; border-radius: 16px; padding: 18px; text-align: center;">
+                    <div style="font-size: 1.1rem; font-weight: 800; color: var(--primary-green);">تاريخ البدء: 18 / 09 / 2026</div>
+                    <p style="font-size: 0.85rem; color: #6b8f79; margin-top: 5px;">اليوم الحالي: 20 / 09 / 2026 (اليوم الثاني)</p>
+                    <div style="margin-top: 10px; background: #e2f2e5; padding: 7px; border-radius: 8px; font-size: 0.8rem; color: #1b5322; font-weight: 700;">
+                        🟢 التفاعل الحيوي نشط
                     </div>
                 </div>
             </div>
-            <!-- خطوة 3 -->
+
             <div class="step-box">
                 <div class="step-num">3</div>
                 <div class="step-title">متابعة عملية التخمير</div>
-                <div class="step-desc">الحالة الأولية للمحلول</div>
+                <div class="step-desc">النتائج الفورية للمحلول</div>
+                <div style="background: rgba(255,255,255,0.9); border: 1px solid #d4e5d8; border-radius: 12px; padding: 12px; text-align: right; margin-bottom: 8px;">
+                    <div style="font-size: 0.85rem; font-weight: 700; color: #2c4233;">💧 حموضة المحلول (pH): <span style="color: #2e7d32;">3.5 (مناسبة)</span></div>
+                </div>
+                <div style="background: rgba(255,255,255,0.9); border: 1px solid #d4e5d8; border-radius: 12px; padding: 12px; text-align: right;">
+                    <div style="font-size: 0.85rem; font-weight: 700; color: #2c4233;">🍃 الرائحة: <span style="color: #2e7d32;">حمضية منعشة</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- شريط التطور التفاعلي (مطابق لصورتك تماماً ويعمل تلقائياً بالأيام) -->
+        <div class="progress-section">
+            <div class="progress-content">
+                <h3><span>📊</span> مستوى التخمير الحالي (<span id="daysCount">0</span> أيام منقضية)</h3>
                 
-                <div class="status-item">
-                    <div class="status-label"><span>💧</span> الحموضة الأولية</div>
-                    <div class="status-badge">قيد التفاعل</div>
+                <div class="timeline-bar-wrap">
+                    <div class="timeline-line">
+                        <div id="progressFill" class="timeline-progress-fill"></div>
+                    </div>
+                    <div class="timeline-nodes">
+                        <div id="node1" class="node active"></div>
+                        <div id="node2" class="node"></div>
+                        <div id="node3" class="node"></div>
+                    </div>
                 </div>
-                <div class="status-item">
-                    <div class="status-label"><span>👁️</span> المظهر</div>
-                    <div class="status-badge">تغير لون الماء</div>
+                
+                <div class="timeline-labels">
+                    <span>البداية</span>
+                    <span>منتصف التخمير</span>
+                    <span>الانتهاء المتوقع</span>
                 </div>
-                <div class="status-item">
-                    <div class="status-label"><span>🍃</span> الرائحة</div>
-                    <div class="status-badge">طبيعية / خفيفة</div>
-                </div>
+            </div>
+
+            <div class="progress-note">
+                💡 كلما زادت مدة التخمير تحسنت فعالية المطهر الطبيعي وتضاعفت كفاءة المستخلصات الحيوية.
             </div>
         </div>
 
-        <!-- سجل ملاحظات اليوم -->
-        <div class="daily-notes-section">
-            <h3 style="font-size: 1.12rem; color: var(--primary-green); display: flex; align-items: center; gap: 10px; font-weight: 800;">
-                <span>📝</span> سجل ملاحظات اليوم (اليوم الثاني - 20/09)
-            </h3>
-            <div class="notes-grid">
-                <div class="note-card">
-                    <h4>هل ظهرت فقاعات؟</h4>
-                    <button class="opt-btn selected" onclick="selectOpt(this)">لا توجد فقاعات بعد (طبيعي)</button>
-                    <button class="opt-btn" onclick="selectOpt(this)">توجد فقاعات خفيفة جداً</button>
-                </div>
-                <div class="note-card">
-                    <h4>رائحة المحلول حالياً:</h4>
-                    <button class="opt-btn selected" onclick="selectOpt(this)">رائحة الفواكه / لا توجد رائحة مميزة</button>
-                    <button class="opt-btn" onclick="selectOpt(this)">بدأت تظهر حموضة خفيفة</button>
-                </div>
-                <div class="note-card">
-                    <h4>مظهر الماء:</h4>
-                    <button class="opt-btn selected" onclick="selectOpt(this)">تغير لون الماء قليلاً (أصفر شفاف)</button>
-                    <button class="opt-btn" onclick="selectOpt(this)">عكر قليلاً مع ترسبات القشور</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- تحليل الملاحظات الفوري -->
-        <div class="analysis-box">
-            <h4>🔬 تحليل النظام الذكي لـ MicroZest اليوم:</h4>
-            <p>
-                بناءً على تاريخ البدء (18/09) ومرور يومين حتى اليوم (20/09)، الوضع سليم ومثالي 100%. قشور البرتقال والليمون والتفاح تبدأ تدريجياً بإطلاق الزيوت العطرية والسكريات التي تغذي الخمائر والبكتيريا النافعة. عدم وجود فقاعات كثيفة في هذه المرحلة أمر طبيعي جداً. تذكري إرخاء الغطاء يومياً لتنفيس الغازات البسيطة الناتجة عن التفاعل.
-            </p>
-        </div>
-
-        <!-- زر التقاط الصورة السفلي الواقعي (بدون كاميرا أو مايك قديم) -->
+        <!-- زر التقاط الصورة السفلي الواقعي -->
         <div class="footer-action">
             <div class="capture-btn">
                 <div class="capture-icon-wrap">📷</div>
                 <div class="capture-text">
-                    <h4>التقاط صورة لتوثيق حالة المحلول</h4>
-                    <p>اضغط لرفع صورة فحص اليوم وتخزينها في تقرير البحث</p>
+                    <h4>التقاط صورة للنتيجة والمظهر</h4>
+                    <p>يمكنك التقاط صورة للنتيجة أو للمطهر لتوثيق البحث</p>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        function selectOpt(button) {
-            const group = button.parentElement;
-            group.querySelectorAll('.opt-btn').forEach(btn => btn.classList.remove('selected'));
-            button.classList.add('selected');
+        // حساب الأيام تلقائياً من تاريخ البدء (18 سبتمبر 2026)
+        const startDate = new Date(2026, 8, 18);
+        const totalDurationDays = 14; // مدة التخمير الكاملة
+        
+        const currentDate = new Date();
+        const diffTime = currentDate - startDate;
+        let diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        if (diffDays < 0) diffDays = 0;
+        if (diffDays > totalDurationDays) diffDays = totalDurationDays;
+
+        // حساب النسبة المئوية لشريط التطور
+        let percentage = (diffDays / totalDurationDays) * 100;
+        
+        document.getElementById('daysCount').textContent = diffDays;
+        document.getElementById('progressFill').style.width = percentage + '%';
+
+        // إضاءة العقد (Nodes) حسب الأيام
+        if (diffDays >= 7) {
+            document.getElementById('node2').classList.add('active');
+        }
+        if (diffDays >= 14) {
+            document.getElementById('node3').classList.add('active');
         }
     </script>
 </body>
